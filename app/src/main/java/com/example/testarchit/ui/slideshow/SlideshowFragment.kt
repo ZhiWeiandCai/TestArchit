@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.testarchit.databinding.FragmentSlideshowBinding
@@ -28,10 +27,18 @@ class SlideshowFragment : Fragment() {
         _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSlideshow
+        /*val textView: TextView = binding.textSlideshow
         slideshowViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
+        }*/
+
+        val recyclerViewShow = binding.rvShow
+        val adapterShow = TestShowAdapter()
+        recyclerViewShow.adapter = adapterShow
+        slideshowViewModel.texts.observe(viewLifecycleOwner) {
+            adapterShow.submitList(it)
         }
+
         return root
     }
 

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.slideshow.SlideshowFragment">
+    tools:context=".ui.slideshow.SlideshowFragment"
+    android:background="#60000000">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/text_slideshow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,5 +19,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_show"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
