@@ -13,7 +13,7 @@ import com.example.testarchit.databinding.ItemTestShowBinding
 /**
  * Created by caizhiwei on 2023/7/26
  */
-class TestShowAdapter : ListAdapter<String, TestShowViewHolder>(TestShowDiffCallback()) {
+class TestShowAdapter : ListAdapter<TableDish, TestShowViewHolder>(TestShowDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestShowViewHolder {
         val binding = ItemTestShowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         //val binding = ItemTestShowBinding.inflate(LayoutInflater.from(parent.context))
@@ -21,7 +21,7 @@ class TestShowAdapter : ListAdapter<String, TestShowViewHolder>(TestShowDiffCall
     }
 
     override fun onBindViewHolder(holder: TestShowViewHolder, position: Int) {
-        holder.textView.text = getItem(position)
+        holder.textView.text = getItem(position).tableName
         holder.imageView.setImageDrawable(
             ResourcesCompat.getDrawable(holder.imageView.resources, R.mipmap.ic_launcher, null)
         )
@@ -31,14 +31,15 @@ class TestShowAdapter : ListAdapter<String, TestShowViewHolder>(TestShowDiffCall
 class TestShowViewHolder(binding: ItemTestShowBinding) : RecyclerView.ViewHolder(binding.root) {
     val imageView: ImageView = binding.imageViewItemShow
     val textView: TextView = binding.textViewItemShow
+    val rw: RecyclerView = binding.rvDish
 }
 
-private class TestShowDiffCallback : androidx.recyclerview.widget.DiffUtil.ItemCallback<String>() {
-    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-        return oldItem == newItem
+private class TestShowDiffCallback : androidx.recyclerview.widget.DiffUtil.ItemCallback<TableDish>() {
+    override fun areItemsTheSame(oldItem: TableDish, newItem: TableDish): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+    override fun areContentsTheSame(oldItem: TableDish, newItem: TableDish): Boolean {
         return oldItem == newItem
     }
 }

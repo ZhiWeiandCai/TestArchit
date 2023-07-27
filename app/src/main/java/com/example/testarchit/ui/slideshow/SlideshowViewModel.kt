@@ -11,19 +11,20 @@ class SlideshowViewModel : ViewModel() {
     }
     val text: LiveData<String> = _text
 
-    private val _texts = MutableLiveData<List<String>>().apply {
+    private val _texts = MutableLiveData<List<TableDish>>().apply {
         value = (1..16).mapIndexed { _, i ->
-            "This is item # $i"
+            TableDish(i,"Table $i", listOf(
+                DishItem("dish $i", 2),
+                DishItem("dish $i", 2),
+                DishItem("dish $i", 2),
+                DishItem("dish $i", 2),
+                DishItem("dish $i", 2),
+                DishItem("dish $i", 2)
+            ))
         }
     }
 
-    val texts: LiveData<List<String>> = _texts
+    val texts: LiveData<List<TableDish>> = _texts
 
-    private val _tables = MutableLiveData<List<String>>().apply {
-        value = (1..16).mapIndexed { _, i ->
-            "Table # $i"
-        }
-    }
 
-    val tables: LiveData<List<String>> = _tables
 }
