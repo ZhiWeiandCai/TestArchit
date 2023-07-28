@@ -19,6 +19,7 @@ class DishAdapter : ListAdapter<DishItem, DishViewHolder>(DishDiffCallback()) {
 
     override fun onBindViewHolder(holder: DishViewHolder, position: Int) {
         holder.tvName.text = getItem(position).name
+        holder.tVNum.text = "x${getItem(position).quantity}"
     }
 }
 

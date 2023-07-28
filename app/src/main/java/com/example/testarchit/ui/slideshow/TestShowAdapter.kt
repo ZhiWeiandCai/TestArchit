@@ -25,6 +25,9 @@ class TestShowAdapter : ListAdapter<TableDish, TestShowViewHolder>(TestShowDiffC
         holder.imageView.setImageDrawable(
             ResourcesCompat.getDrawable(holder.imageView.resources, R.mipmap.ic_launcher, null)
         )
+        val innerAdapterDish = DishAdapter()
+        holder.rw.adapter = innerAdapterDish
+        innerAdapterDish.submitList(getItem(position).dishes)
     }
 }
 
