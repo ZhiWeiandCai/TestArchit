@@ -32,6 +32,11 @@ class ReflowFragment : Fragment() {
         reflowViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        //https://wsa.jianshu.io/p/dd3a9323b81a
+        //https://developer.android.google.cn/develop/connectivity/network-ops/connecting?hl=zh-cn
+        //https://developer.android.google.cn/kotlin/coroutines?hl=zh-cn
+
         return root
     }
 
