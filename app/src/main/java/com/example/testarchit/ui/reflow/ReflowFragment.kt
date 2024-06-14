@@ -44,26 +44,15 @@ class ReflowFragment : Fragment() {
         //https://developer.android.google.cn/develop/connectivity/network-ops/connecting?hl=zh-cn
         //https://developer.android.google.cn/kotlin/coroutines?hl=zh-cn
         textView.setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch {
-                try {
-                    // 在 IO 线程中发送网络请求
-                    val result = withContext(Dispatchers.IO) {
-                        HttpApiService.sendRequest(1, object : NetworkCallback<ResultResponse>() {
-                            override fun onSuccessResponse(t: ResultResponse) {
-                                Log.w(TAG, "onSuccessResponse-code=" + t.resultCode + " msg=" + t.message)
-                            }
-
-                            override fun onFailureResponse(t: ResultResponse) {
-
-                            }
-                        })
-                    }
-                    // 处理成功响应
-                    //handleSuccessResponse(result)
-                } catch (e: Exception) {
-                    // 处理失败响应
-                    //handleFailureResponse(e)
-                }
+            reflowViewModel.getConnectResponse()
+        }
+        reflowViewModel.resultResponse.observe(viewLifecycleOwner) {
+            if (it.resultCode == "0") {
+                // 处理成功响应
+                //handleSuccessResponse(result)
+            } else {
+                // 处理失败响应
+                //handleFailureResponse(result)
             }
         }
 

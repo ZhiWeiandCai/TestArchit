@@ -8,9 +8,19 @@
     <TextView
         android:id="@+id/text_view_item_show_select"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Table 1" />
+
+    <TextView
+        android:id="@+id/test_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/text_view_item_show_select"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="60dp"
+        tools:text="Table 2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiServiceManager {
     private const val TAG = "ApiServiceManager" // 用于日志的标签
     private const val DEFAULT_BASE_URL = "http://192.168.43.173:9092/" // 默认的Base URL
+    //private const val DEFAULT_BASE_URL = "http://10.0.28.187:9092/"
     private var currentBaseUrl: String = DEFAULT_BASE_URL // 当前的Base URL，可以动态修改
 
     // 使用lazy初始化OkHttpClient实例，保证只在第一次使用时创建

@@ -1,10 +1,13 @@
 package com.example.testarchit.ui.slideshow
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.testarchit.databinding.FragmentSlideshowBinding
 
@@ -15,6 +18,11 @@ class SlideshowFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.i("SlideshowFragment", "onAttach")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,5 +53,16 @@ class SlideshowFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        Log.i("SlideshowFragment", "onDestroyView")
+    }
+
+    override fun onDestroy() {
+        Log.i("SlideshowFragment", "onDestroy")
+        super.onDestroy()
+    }
+
+    override fun onDetach() {
+        Log.i("SlideshowFragment", "onDetach")
+        super.onDetach()
     }
 }
