@@ -9,13 +9,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.testarchit.databinding.FragmentReflowBinding
-import com.example.testarchit.net.http.HttpApiService
-import com.example.testarchit.net.http.NetworkCallback
-import com.example.testarchit.net.http.ResultResponse
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class ReflowFragment : Fragment() {
     private var _binding: FragmentReflowBinding? = null
@@ -47,6 +40,7 @@ class ReflowFragment : Fragment() {
             reflowViewModel.getConnectResponse()
         }
         reflowViewModel.resultResponse.observe(viewLifecycleOwner) {
+            Log.i(TAG, "onSuccessResponse-code=" + it.resultCode + " msg=" + it.message)
             if (it.resultCode == "0") {
                 // 处理成功响应
                 //handleSuccessResponse(result)
